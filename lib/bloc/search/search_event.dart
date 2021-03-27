@@ -8,3 +8,5 @@ class Search extends SearchEvent {
 
   Search({this.query});
 }
+
+class Reset extends SearchEvent {}

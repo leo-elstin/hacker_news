@@ -32,5 +32,9 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
           .toList();
       yield Searched(news: news);
     }
+
+    if (event is Reset) {
+      yield SearchInitial();
+    }
   }
 }
