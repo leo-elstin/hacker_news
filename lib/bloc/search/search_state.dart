@@ -14,3 +14,4 @@ class Searched extends SearchState {
 }
 
 class SearchFailed extends SearchState {}
+class OpenDetailsState extends SearchState {}

@@ -10,3 +10,9 @@ class Search extends SearchEvent {
 }
 
 class Reset extends SearchEvent {}
+
+class OpenDetailsEvent extends SearchEvent {
+  final String id;
+
+  OpenDetailsEvent(this.id);
+}

@@ -19,22 +19,25 @@ class _NewsListState extends State<NewsList> {
         if (state is Searched) {
           return Container(
             child: ListView.separated(
-              separatorBuilder: (context,index){
+              separatorBuilder: (context, index) {
                 return Divider();
               },
               itemCount: state.news.length,
               itemBuilder: (context, index) {
                 News news = state.news[index];
                 return ListTile(
+                  onTap: () {},
                   title: Text('${news.title}'),
-                  subtitle: Text('${news.author} | ${news.commentsCount} Comments'),
+                  subtitle: Text(
+                    '${news.author} | ${news.commentsCount} Comments',
+                  ),
                 );
               },
             ),
           );
         }
 
-        if(state is Searching) {
+        if (state is Searching) {
           return Center(
             child: SizedBox(
               height: 16,
@@ -47,5 +50,9 @@ class _NewsListState extends State<NewsList> {
         return Offstage();
       },
     );
+  }
+
+  void openDetails(String id) {
+    BlocProvider.of<SearchBloc>(context).add(OpenDetailsEvent(id));
   }
 }
