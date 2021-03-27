@@ -14,8 +14,8 @@ class DetailsResponse {
     this.type,
     this.author,
     this.title,
-    this.url,
     this.text,
+    this.url,
     this.points,
     this.parentId,
     this.storyId,
@@ -29,8 +29,8 @@ class DetailsResponse {
   String type;
   String author;
   String title;
-  String url;
   String text;
+  String url;
   int points;
   int parentId;
   int storyId;
@@ -63,13 +63,13 @@ class DetailsResponse {
 
   Map<String, dynamic> toJson() => {
         "id": id == null ? null : id,
+        "text": text == null ? null : text,
         "created_at": createdAt == null ? null : createdAt.toIso8601String(),
         "created_at_i": createdAtI == null ? null : createdAtI,
         "type": type == null ? null : type,
         "author": author == null ? null : author,
         "title": title == null ? null : title,
         "url": url == null ? null : url,
-        "text": text == null ? null : text,
         "points": points == null ? null : points,
         "parent_id": parentId == null ? null : parentId,
         "story_id": storyId == null ? null : storyId,

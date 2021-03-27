@@ -27,6 +27,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
               title: e.title,
               author: e.author,
               url: e.url,
+              id: e.objectId,
               commentsCount: e.numComments,
               description: ''))
           .toList();
@@ -34,7 +35,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     }
 
     if (event is OpenDetailsEvent) {
-      yield OpenDetailsState();
+      yield OpenDetailsState(event.id);
     }
 
     if (event is Reset) {

@@ -5,10 +5,10 @@ abstract class NewsDetailsState {}
 
 class NewsDetailsInitial extends NewsDetailsState {}
 
-class FetchingDetails extends NewsDetailsState {
-
-}
+class FetchingDetails extends NewsDetailsState {}
 
 class NewsDetailsFetched extends NewsDetailsState {
+  final DetailsResponse detailsResponse;
 
+  NewsDetailsFetched(this.detailsResponse);
 }

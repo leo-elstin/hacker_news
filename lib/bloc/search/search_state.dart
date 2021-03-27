@@ -14,4 +14,8 @@ class Searched extends SearchState {
 }
 
 class SearchFailed extends SearchState {}
-class OpenDetailsState extends SearchState {}
+class OpenDetailsState extends SearchState {
+  final String id;
+
+  OpenDetailsState(this.id);
+}

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hacker_news/bloc/details/news_details_bloc.dart';
 import 'package:hacker_news/bloc/search/search_bloc.dart';
 import 'package:hacker_news/model/service/news_service.dart';
 import 'package:hacker_news/view/home.dart';
+import 'package:hacker_news/view/widgets/details_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,9 +17,13 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<SearchBloc>(
+          lazy: true,
           create: (context) => SearchBloc(
             service: NewsService(),
           ),
+        ),
+        BlocProvider<NewsDetailsBloc>(
+          create: (context) => NewsDetailsBloc(),
         ),
       ],
       child: MaterialApp(
@@ -26,6 +32,9 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         home: Home(),
+        routes: {
+          NewsDetails.route: (_) => NewsDetails(),
+        },
       ),
     );
   }

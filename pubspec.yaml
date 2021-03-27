@@ -27,6 +27,8 @@ dependencies:
   # Plugins
   http: ^0.13.1 # for network operations
   flutter_bloc: ^6.1.3 # for state management
+  timeago: ^3.0.2 # handle time ago
+  flutter_html: ^1.3.0 # to show html tags
 
 dev_dependencies:
   flutter_test:

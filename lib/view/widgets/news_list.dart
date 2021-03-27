@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hacker_news/bloc/details/news_details_bloc.dart';
 import 'package:hacker_news/bloc/search/search_bloc.dart';
 import 'package:hacker_news/model/data_model/news.dart';
+import 'package:hacker_news/view/widgets/details_page.dart';
 
 class NewsList extends StatefulWidget {
   @override
@@ -26,7 +28,9 @@ class _NewsListState extends State<NewsList> {
               itemBuilder: (context, index) {
                 News news = state.news[index];
                 return ListTile(
-                  onTap: () {},
+                  onTap: () {
+                    openDetails(news.id);
+                  },
                   title: Text('${news.title}'),
                   subtitle: Text(
                     '${news.author} | ${news.commentsCount} Comments',
@@ -52,7 +56,12 @@ class _NewsListState extends State<NewsList> {
     );
   }
 
+
+  /// method to invoke the GetDetails bloc and create navigation
+  /// based on [id] of the news object
   void openDetails(String id) {
-    BlocProvider.of<SearchBloc>(context).add(OpenDetailsEvent(id));
+    BlocProvider.of<NewsDetailsBloc>(context).add(GetDetails(id));
+    // open the NewsDetails page
+    Navigator.pushNamed(context, NewsDetails.route);
   }
 }
